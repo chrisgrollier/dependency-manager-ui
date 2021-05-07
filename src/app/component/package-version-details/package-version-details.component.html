@@ -1,0 +1,23 @@
+<div *ngIf="packageVersion">
+  <p>
+    <a [title]="packageVersion.name + ' details'" [routerLink]="['/packages', packageVersion.id]">
+      Back to {{packageVersion.name}}
+    </a>
+  </p>
+  <h3>{{ packageVersion.name }} {{packageVersion.version}} Details</h3>
+  <p>description: {{packageVersion.versionDescription}}</p>
+  <p>last minor version: {{packageVersion.lastMinorVersion}}</p>
+  <p>comment: {{packageVersion.versionComment}}</p>
+  <p>criticity: {{packageVersion.criticity}}</p>
+  <h4>
+    dependencies:
+  </h4>
+  <div *ngIf="version">
+    <div *ngFor="let dependency of version.dependencies">
+      <p>
+        <app-spaces [count]="dependency.depth"></app-spaces> {{dependency.name}} {{dependency.version}}
+        ({{dependency.scope}})
+      </p>
+    </div>
+  </div>
+</div>

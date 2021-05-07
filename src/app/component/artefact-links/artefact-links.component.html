@@ -1,0 +1,24 @@
+<div *ngIf="artefact">
+  <a
+    [title]="artefact.name + ' details'"
+    [routerLink]="['/artefacts', artefact.id]"
+  >
+    {{ artefact.name }}
+  </a>
+  <span *ngIf="artefact.kind == 'mvn'">
+    <a
+      [title]="'View on mvnrepository'"
+      [href]="'https://mvnrepository.com/artifact/' + artefact.name.replace(':', '/')"
+      target="_blank"
+      >(repo)</a
+    >
+  </span>
+  <span *ngIf="artefact.kind == 'npm'">
+    <a
+      [title]="'View on npmjs'"
+      [href]="'https://www.npmjs.com/package/' + artefact.name.replace(':', '/')"
+      target="_blank"
+      >({{ artefact.kind }})</a
+    >
+  </span>
+</div>

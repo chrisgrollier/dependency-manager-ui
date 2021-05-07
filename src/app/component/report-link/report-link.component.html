@@ -1,0 +1,10 @@
+<span *ngIf="package">
+  <a href="javascript:void(0)" [title]="'Generate an Excel Workbook for ' + package.name " (click)="downloadReport(package.kind, package.name)">
+    XL
+  </a>
+</span>
+<span *ngIf="!package">
+  <a href="javascript:void(0)" [title]="'Generate a global Excel Workbook'" (click)="downloadReportGlobal()">
+    XL
+  </a>
+</span>

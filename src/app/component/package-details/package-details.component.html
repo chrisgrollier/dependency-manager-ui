@@ -1,0 +1,35 @@
+<div *ngIf="package">
+
+  <h2>{{ package.name }} Details</h2>
+
+  <p><label>kind: <span>{{ package.kind }}</span> </label> <label>type: <span>{{ package.type }}</span></label> <label>Last
+		update:
+		<span>{{package.lastInfoUpdateDateTime | date:'medium'}}</span></label></p>
+  <div>
+    <label>Description: 
+      <textarea
+          rows="2" cols="60" maxLength="250"
+          [(ngModel)]="package.description"  placeholder="Enter a description for this package"
+          ></textarea>
+    </label>
+  </div>
+  <div>
+    <label>comments: 
+      <textarea
+          rows="2" cols="60" maxLength="250" [(ngModel)]="package.comment" placeholder="Enter comments for this package"></textarea>
+    </label>
+  </div>
+  <div>
+    <label>deployable
+    <input type="checkbox" [(ngModel)]="package.deployable" />
+   </label>
+  </div>
+  <p></p>
+  <button (click)="update()">update</button>
+  <h4>Analyzed versions: </h4>
+  <div *ngFor="let version of package.versions">
+    <a [title]="version.version + ' version details'" [routerLink]="['/packages', package.id, 'versions', version.id]">
+      {{ version.version }}
+    </a>
+  </div>
+</div>

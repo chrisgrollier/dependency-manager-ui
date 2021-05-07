@@ -1,0 +1,46 @@
+<div *ngIf="artefactVersion">
+  <p>
+    <a [title]="artefactVersion.name + ' details'" [routerLink]="['/artefacts', artefactVersion.id]">
+      Back to {{ artefactVersion.name }}
+    </a>
+  </p>
+  <h3>{{ artefactVersion.name }} {{artefactVersion.version}} Details </h3>
+  <label>last update: <span>{{artefactVersion.versionLastInfoUpdateDateTime | date:'medium'}}</span></label>
+
+  <div>
+    <label>description: 
+      <textarea
+          rows="2" cols="60" maxLength="250"
+          [(ngModel)]="artefactVersion.versionDescription"  placeholder="Enter a description for this version"
+          ></textarea>
+    </label>
+  </div>
+  <div>
+    <label>comments: 
+      <textarea
+          rows="2" cols="60" maxLength="250"
+          [(ngModel)]="artefactVersion.versionComment"  placeholder="Enter comments relative to this version"
+          ></textarea>
+    </label>
+  </div>
+  <div>
+    <label>last minor version: 
+      <input [(ngModel)]="artefactVersion.lastMinorVersion" placeholder="Enter last minor version" />
+    </label>
+  </div>
+  <div>
+    <label>criticity: 
+      <input type="number" [(ngModel)]="artefactVersion.criticity"  />
+    </label>
+  </div>
+  <button (click)="update()">update</button>
+
+  <h4>
+    Used by:
+  </h4>
+  <div *ngIf="version">
+    <div *ngFor="let dependentVersion of version.usedBy">
+      <p> - {{dependentVersion.name}} {{dependentVersion.version}}</p>
+    </div>
+  </div>
+</div>
