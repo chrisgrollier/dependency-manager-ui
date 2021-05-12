@@ -31,7 +31,7 @@ import { SpacesComponent } from "./component/spaces/spaces.component";
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot([
-      { path: "", component: ApplicationListComponent },
+      { path: "applications", component: ApplicationListComponent },
       { path: "packages", component: PackageListComponent },
       { path: "artefacts", component: ArtefactListComponent },
       { path: "packages/:packageId", component: PackageDetailsComponent },
@@ -43,8 +43,9 @@ import { SpacesComponent } from "./component/spaces/spaces.component";
       {
         path: "packages/:packageId/versions/:versionId",
         component: PackageVersionDetailsComponent
-      }
-    ])
+      },
+      { path: "", redirectTo:"/applications", pathMatch: "full" }
+    ], {useHash: true})
   ],
   declarations: [
     AppComponent,
