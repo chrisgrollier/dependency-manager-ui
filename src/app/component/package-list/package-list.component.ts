@@ -9,7 +9,7 @@ import { PackageView } from "../../model/package-view";
   styleUrls: ["./package-list.component.css"]
 })
 export class PackageListComponent implements OnInit {
-  packages: PackageView[];
+  packages!: PackageView[];
 
   constructor(private packageService: PackageService) {}
 

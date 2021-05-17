@@ -9,7 +9,7 @@ import { SimpleArtefactView } from "../../model/simple-artefact-view";
   styleUrls: ["./artefact-list.component.css"]
 })
 export class ArtefactListComponent implements OnInit {
-  artefacts: SimpleArtefactView[];
+  artefacts!: SimpleArtefactView[];
 
   constructor(private artefactService: ArtefactService) {}
 

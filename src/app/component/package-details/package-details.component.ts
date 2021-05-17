@@ -9,7 +9,7 @@ import { PackageService } from "../../service/package.service";
   styleUrls: ["./package-details.component.css"]
 })
 export class PackageDetailsComponent implements OnInit {
-  package: PackageView;
+  package!: PackageView;
 
   constructor(
     private route: ActivatedRoute,

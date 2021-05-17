@@ -7,7 +7,8 @@ import { SimpleArtefactView } from "../../model/simple-artefact-view";
   styleUrls: ["./artefact-links.component.css"]
 })
 export class ArtefactLinksComponent implements OnInit {
-  @Input() artefact: SimpleArtefactView;
+  @Input()
+  artefact!: SimpleArtefactView;
 
   constructor() {}
 

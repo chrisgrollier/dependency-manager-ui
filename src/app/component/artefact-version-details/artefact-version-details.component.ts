@@ -10,8 +10,8 @@ import { VersionView } from "../../model/version-view";
   styleUrls: ["./artefact-version-details.component.css"]
 })
 export class ArtefactVersionDetailsComponent implements OnInit {
-  artefactVersion: SimpleArtefactVersionView;
-  version: VersionView;
+  artefactVersion!: SimpleArtefactVersionView;
+  version!: VersionView;
 
   constructor(
     private route: ActivatedRoute,

@@ -8,8 +8,10 @@ import { ReportService } from "../../service/report.service";
   styleUrls: ["./report-link.component.css"]
 })
 export class ReportLinkComponent implements OnInit {
-  @Input() package: GroupedArtefactView;
-  @Input() filter: string;
+  @Input()
+  package!: GroupedArtefactView;
+  @Input()
+  filter!: string;
   constructor(private reportService: ReportService) {}
 
   ngOnInit() {}

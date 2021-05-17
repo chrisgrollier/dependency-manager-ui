@@ -8,7 +8,7 @@ import { PackageService } from "../../service/package.service";
   styleUrls: ["./application-list.component.css"]
 })
 export class ApplicationListComponent implements OnInit {
-  applications: GroupedArtefactView[];
+  applications!: GroupedArtefactView[];
 
   constructor(private packageService: PackageService) {
   } 

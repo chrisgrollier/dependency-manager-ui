@@ -8,7 +8,7 @@ import { ArtefactService } from "../../service/artefact.service";
   styleUrls: ["./artefact-details.component.css"]
 })
 export class ArtefactDetailsComponent implements OnInit {
-  artefact: SimpleArtefactView;
+  artefact!: SimpleArtefactView;
 
   constructor(
     private route: ActivatedRoute,
