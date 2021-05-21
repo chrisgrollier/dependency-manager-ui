@@ -1,15 +1,11 @@
-<a [title]="'View analyzed applications'" [routerLink]="['/applications']">
+<button *ngIf="!isLoggedIn" class="fancy-button" (click)="login()" type="submit">Login</button>
+<button *ngIf="isLoggedIn" class="fancy-button" (click)="logout()" type="submit">Logout</button>
+<a *ngIf="isLoggedIn" [title]="'View analyzed applications'" [routerLink]="['/applications']">
   <h1>Applications</h1>
 </a>
-<a [title]="'View analyzed packages'" [routerLink]="['/packages']">
+<a *ngIf="isLoggedIn" [title]="'View analyzed packages'" [routerLink]="['/packages']">
   <h1>Packages</h1>
 </a>
-<a [title]="'View analyzed application dependencies'" [routerLink]="['/artefacts']">
+<a *ngIf="isLoggedIn" [title]="'View analyzed application dependencies'" [routerLink]="['/artefacts']">
   <h1>Dependencies</h1>
 </a>
-
-<!-- 
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
--->

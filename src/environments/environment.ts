@@ -4,7 +4,13 @@
 
 export const environment = {
   production: false,
-  apiRoot: "http://localhost:8080/api/v1"
+  apiRoot: "http://localhost:8080/api/v1",
+  clientId: "dependency-manager",
+  clientSecret: "6e86bc96-844f-4ff4-8ea0-64ede37849c3",
+  tokenUri: "http://localhost:8180/auth/realms/chris02/protocol/openid-connect/token",
+  authUri: "http://localhost:8180/auth/realms/chris02/protocol/openid-connect/auth",
+  logoutUri: "http://localhost:8180/auth/realms/chris02/protocol/openid-connect/logout",
+  redirectUri: "http://localhost:4200"
 };
 
 /*
@@ -15,10 +21,3 @@ export const environment = {
  * on performance if an error is thrown.
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/

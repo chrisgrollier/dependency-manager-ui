@@ -1,9 +1,9 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
 import { SimpleArtefactVersionView } from "../model/simple-artefact-version-view";
 import { VersionView } from "../model/version-view";
 import { environment } from '../../environments/environment';
+import { AppService } from "./app-service";
 
 @Injectable()
 export class ArtefactVersionService {
@@ -11,16 +11,13 @@ export class ArtefactVersionService {
   private backUrl = this.env.apiRoot + "/artefacts";
   private versionsUrl = "/versions";
   private versionsBackUrl = this.env.apiRoot + "/artefact_versions";
-  private httpOptions = {
-    headers: new HttpHeaders({ "Content-Type": "application/json" })
-  };
-  constructor(private http: HttpClient) {}
+  constructor(private appService: AppService) { }
 
   getVersionView(
     artefactId: number,
     versionId: number
   ): Observable<VersionView> {
-    return this.http.get<VersionView>(
+    return this.appService.getResource<VersionView>(
       this.backUrl + "/" + artefactId + this.versionsUrl + "/" + versionId
     );
   }
@@ -28,7 +25,7 @@ export class ArtefactVersionService {
   getSimpleArtefactVersionView(
     id: number
   ): Observable<SimpleArtefactVersionView> {
-    return this.http.get<SimpleArtefactVersionView>(
+    return this.appService.getResource<SimpleArtefactVersionView>(
       this.versionsBackUrl + "/" + id
     );
   }
@@ -37,10 +34,9 @@ export class ArtefactVersionService {
     id: number,
     info: SimpleArtefactVersionView
   ): Observable<any> {
-    return this.http.patch(
+    return this.appService.patchResource(
       this.versionsBackUrl + "/" + id,
-      info,
-      this.httpOptions
+      info
     );
   }
 }

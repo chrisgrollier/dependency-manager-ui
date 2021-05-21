@@ -1,17 +1,33 @@
 import { Component } from '@angular/core';
+import { AppService } from 'src/app/service/app-service';
 
 @Component({
   selector: 'app-top-bar',
+  providers: [AppService],
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css']
 })
 export class TopBarComponent {
+  public isLoggedIn = false;
+
+  constructor(
+    private service: AppService) { }
+
+  ngOnInit() {
+    this.isLoggedIn = this.service.checkCredentials();
+    let i = window.location.href.indexOf('code');
+    if (!this.isLoggedIn && i != -1) {
+      this.service.retrieveToken(window.location.href.substring(i + 5));
+    }
+  }
+
+  login() {
+    window.location.href = this.service.authUri + '?response_type=code&scope=openid%20write%20read&client_id=' +
+      this.service.clientId + '&redirect_uri=' + this.service.redirectUri;
+  }
+
+  logout() {
+    this.service.logout();
+  }
 
 }
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/

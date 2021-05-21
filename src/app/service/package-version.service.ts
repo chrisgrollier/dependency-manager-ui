@@ -1,9 +1,9 @@
-import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { SimpleArtefactVersionView } from "../model/simple-artefact-version-view";
 import { VersionView } from "../model/version-view";
 import { environment } from '../../environments/environment';
+import { AppService } from "./app-service";
 
 @Injectable()
 export class PackageVersionService {
@@ -12,13 +12,13 @@ export class PackageVersionService {
   private versionsUrl = "/versions";
   private versionsBackUrl = this.env.apiRoot + "/package_versions";
 
-  constructor(private http: HttpClient) {}
+  constructor(private appService: AppService) {}
 
   getVersionView(
     packageId: number,
     versionId: number
   ): Observable<VersionView> {
-    return this.http.get<VersionView>(
+    return this.appService.getResource<VersionView>(
       this.backUrl + "/" + packageId + this.versionsUrl + "/" + versionId
     );
   }
@@ -26,7 +26,7 @@ export class PackageVersionService {
   getSimplePackageVersionView(
     id: number
   ): Observable<SimpleArtefactVersionView> {
-    return this.http.get<SimpleArtefactVersionView>(
+    return this.appService.getResource<SimpleArtefactVersionView>(
       this.versionsBackUrl + "/" + id
     );
   }

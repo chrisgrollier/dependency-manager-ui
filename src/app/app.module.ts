@@ -23,6 +23,7 @@ import { ApplicationListComponent } from "./component/application-list/applicati
 import { ReportService } from "./service/report.service";
 import { ReportLinkComponent } from "./component/report-link/report-link.component";
 import { SpacesComponent } from "./component/spaces/spaces.component";
+import { AppService } from "./service/app-service";
 
 @NgModule({
   imports: [
@@ -44,8 +45,8 @@ import { SpacesComponent } from "./component/spaces/spaces.component";
         path: "packages/:packageId/versions/:versionId",
         component: PackageVersionDetailsComponent
       },
-      { path: "", redirectTo:"/applications", pathMatch: "full" }
-    ], {useHash: true})
+      { path: "", redirectTo: "/applications", pathMatch: "full" }
+    ], { useHash: true, onSameUrlNavigation: "reload" })
   ],
   declarations: [
     AppComponent,
@@ -64,6 +65,7 @@ import { SpacesComponent } from "./component/spaces/spaces.component";
   ],
   bootstrap: [AppComponent],
   providers: [
+    AppService,
     PackageService,
     ArtefactService,
     ArtefactVersionService,
@@ -71,10 +73,4 @@ import { SpacesComponent } from "./component/spaces/spaces.component";
     ReportService
   ]
 })
-export class AppModule {}
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
+export class AppModule { }

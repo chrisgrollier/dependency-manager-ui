@@ -1,4 +1,9 @@
 <div *ngIf="artefact">
+	<p>
+		<a [title]="'Back to artefacts'" [routerLink]="['/artefacts']">
+			Back to artefacts
+		</a>	
+    </p> 
 	<h3>{{ artefact.name }} Details</h3>
 	<p><label>kind: <span>{{ artefact.kind }}</span> </label> <label>type: <span>{{ artefact.type }}</span></label>
 		<label>Last
