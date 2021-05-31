@@ -25,7 +25,7 @@ export class TopBarComponent {
   }
 
   login() {
-    window.location.href = this.service.authUri + '?response_type=code&scope=openid&client_id=' +
+    window.location.href = this.service.authUri + '?response_type=code&scope=openid%20read&client_id=' +
       this.service.clientId + '&redirect_uri=' + this.service.redirectUri;
   }
 
