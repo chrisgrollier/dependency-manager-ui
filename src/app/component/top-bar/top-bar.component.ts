@@ -15,9 +15,11 @@ export class TopBarComponent {
 
   ngOnInit() {
     this.isLoggedIn = this.service.checkCredentials();
+    window.alert("top init, is logged in: " + this.isLoggedIn);
     let i = window.location.href.indexOf('code');
     if (!this.isLoggedIn && i != -1) {
       console.log(window.location.href);
+      window.alert("top init, have code: " + window.location.href);
       this.service.retrieveToken(window.location.href.substring(i + 5));
     }
   }
