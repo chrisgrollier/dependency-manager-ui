@@ -17,6 +17,7 @@ export class TopBarComponent {
     this.isLoggedIn = this.service.checkCredentials();
     let i = window.location.href.indexOf('code');
     if (!this.isLoggedIn && i != -1) {
+      console.log(window.location.href);
       this.service.retrieveToken(window.location.href.substring(i + 5));
     }
   }

@@ -24,7 +24,7 @@ export class AppService {
         params.append('client_secret', this.clientSecret);
         params.append('redirect_uri', this.redirectUri);
         params.append('code', code);
-
+        console.log(code);
         let headers = new HttpHeaders({ 'Content-type': 'application/x-www-form-urlencoded; charset=utf-8' });
         this.http.post(this.tokenUri, params.toString(), { headers: headers })
             .subscribe(
