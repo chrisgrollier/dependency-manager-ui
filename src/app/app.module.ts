@@ -24,6 +24,7 @@ import { ReportService } from "./service/report.service";
 import { ReportLinkComponent } from "./component/report-link/report-link.component";
 import { SpacesComponent } from "./component/spaces/spaces.component";
 import { AppService } from "./service/app-service";
+import { ArtefactPublicListComponent } from "./component/artefact-public-list/artefact-public-list.component";
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { AppService } from "./service/app-service";
       { path: "applications", component: ApplicationListComponent },
       { path: "packages", component: PackageListComponent },
       { path: "artefacts", component: ArtefactListComponent },
+      { path: "public/artefacts", component: ArtefactPublicListComponent },
       { path: "packages/:packageId", component: PackageDetailsComponent },
       { path: "artefacts/:artefactId", component: ArtefactDetailsComponent },
       {
@@ -45,7 +47,7 @@ import { AppService } from "./service/app-service";
         path: "packages/:packageId/versions/:versionId",
         component: PackageVersionDetailsComponent
       },
-      { path: "", redirectTo: "/applications", pathMatch: "full" }
+      { path: "", redirectTo: "/public/artefacts", pathMatch: "full" }
     ], { useHash: true, onSameUrlNavigation: "reload" })
   ],
   declarations: [
@@ -55,6 +57,7 @@ import { AppService } from "./service/app-service";
     PackageAlertsComponent,
     PackageDetailsComponent,
     ArtefactListComponent,
+    ArtefactPublicListComponent,
     ArtefactDetailsComponent,
     ArtefactVersionDetailsComponent,
     PackageVersionDetailsComponent,

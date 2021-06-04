@@ -7,5 +7,8 @@
 <a *ngIf="isLoggedIn" [title]="'View analyzed application dependencies'" [routerLink]="['/artefacts']">
   <h1>Dependencies</h1>
 </a>
+<a *ngIf="!isLoggedIn" [title]="'View referenced public artefacts'" [routerLink]="['/public/artefacts']">
+  <h1>Public Dependencies</h1>
+</a>
 <button *ngIf="!isLoggedIn" class="fancy-button" (click)="login()" type="submit">Login</button>
 <button *ngIf="isLoggedIn" class="fancy-button" (click)="logout()" type="submit">Logout</button>

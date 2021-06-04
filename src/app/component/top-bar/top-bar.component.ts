@@ -22,7 +22,7 @@ export class TopBarComponent {
   }
 
   login() {
-    window.location.href = this.service.authUri + '?response_type=code&scope=openid%20https%3A%2F%2F132.145.60.143%2Fread%20https%3A%2F%2F132.145.60.143%2Fwrite&client_id=' +
+    window.location.href = this.service.authUri + '?response_type=code&scope=' + this.service.scope + '&client_id=' +
       this.service.clientId + '&redirect_uri=' + this.service.redirectUri;
   }
 

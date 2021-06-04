@@ -10,7 +10,12 @@ import { AppService } from "./app-service";
 export class ArtefactService {
   private env = environment;
   private backUrl = this.env.apiRoot + "/artefacts";
+  private publicBackUrl = this.env.apiRoot + "/public/artefacts";
   constructor(private appService: AppService) { }
+
+  getPublicArtefactViews(): Observable<SimpleArtefactView[]> {
+    return this.appService.getResource<SimpleArtefactView[]>(this.publicBackUrl);
+  }
 
   getArtefactViews(): Observable<SimpleArtefactView[]> {
     return this.appService.getResource<SimpleArtefactView[]>(this.backUrl + "/simple");

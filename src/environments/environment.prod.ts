@@ -6,5 +6,6 @@ export const environment = {
   tokenUri: "https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/oauth2/v1/token",
   authUri: "https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/oauth2/v1/authorize",
   logoutUri: "https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/oauth2/v1/userlogout",
-  redirectUri: "https://132.145.60.143"
+  redirectUri: "https://132.145.60.143",
+  scope: "openid%20urn:opc:idm:__myscopes__"
 };

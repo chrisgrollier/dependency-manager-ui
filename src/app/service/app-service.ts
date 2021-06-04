@@ -12,6 +12,7 @@ export class AppService {
     public tokenUri = this.env.tokenUri;
     public logoutUri = this.env.logoutUri;
     public authUri = this.env.authUri;
+    public scope = this.env.scope;
     private clientSecret = this.env.clientSecret;
 
     constructor(
