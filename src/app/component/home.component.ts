@@ -23,7 +23,7 @@ export class HomeComponent {
     }
 
     login() {
-        window.location.href = this._service.authUri + '?response_type=code&scope=openid%20write%20read&client_id=' +
+        window.location.href = this._service.authUri + '?response_type=code&scope=' + this._service.scope + '&client_id=' +
             this._service.clientId + '&redirect_uri=' + this._service.redirectUri;
     }
 
