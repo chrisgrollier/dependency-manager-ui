@@ -30,7 +30,7 @@ export class AppService {
         this.http.post(this.tokenUri, params.toString(), { headers: headers })
             .subscribe(
                 data => this.saveToken(data),
-                err => alert('Invalid Credentials')
+                err => this.showError(err)
             );
     }
 
@@ -40,6 +40,11 @@ export class AppService {
         Cookie.set("id_token", token.id_token, expireDate);
         console.log('Obtained Access token');
         window.location.href = this.redirectUri;
+    }
+
+    showError(err: any) {
+        console.error(err);
+        alert(err);
     }
 
     getPublicResource<T>(resourceUrl: string): Observable<T> {
