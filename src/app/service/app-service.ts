@@ -42,6 +42,11 @@ export class AppService {
         window.location.href = this.redirectUri;
     }
 
+    getPublicResource<T>(resourceUrl: string): Observable<T> {
+        var headers = new HttpHeaders({ 'Content-type': 'application/json' });
+        return this.http.get<T>(resourceUrl, { headers: headers });
+    }
+
     getResource<T>(resourceUrl: string): Observable<T> {
         var headers = new HttpHeaders({ 'Content-type': 'application/json', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
         return this.http.get<T>(resourceUrl, { headers: headers });

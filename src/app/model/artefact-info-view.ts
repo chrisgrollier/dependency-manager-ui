@@ -5,4 +5,5 @@ export interface ArtefactInfoView extends InfoView {
   vulnerabilityLevel: number;
   obsolescenceLevel: number;
   lastReleaseDate: Date;
+  onPrivateRepository: boolean;
 }

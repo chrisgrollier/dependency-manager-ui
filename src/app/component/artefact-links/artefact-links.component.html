@@ -1,10 +1,20 @@
 <div *ngIf="artefact">
-  <a
-    [title]="artefact.name + ' details'"
-    [routerLink]="['/artefacts', artefact.id]"
-  >
-    {{ artefact.name }}
-  </a>
+  <span *ngIf="scope == 'public'">
+    <a
+      [title]="artefact.name + ' details'"
+      [routerLink]="['/public/artefacts', artefact.id]"
+    >
+      {{ artefact.name }}
+    </a>
+  </span>
+  <span *ngIf="scope != 'public'">
+    <a
+      [title]="artefact.name + ' details'"
+      [routerLink]="['/artefacts', artefact.id]"
+    >
+      {{ artefact.name }}
+    </a>
+  </span>
   <span *ngIf="artefact.kind == 'mvn'">
     <a
       [title]="'View on mvnrepository'"

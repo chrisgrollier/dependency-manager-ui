@@ -9,6 +9,8 @@ import { SimpleArtefactView } from "../../model/simple-artefact-view";
 export class ArtefactLinksComponent implements OnInit {
   @Input()
   artefact!: SimpleArtefactView;
+  @Input()
+  scope!: string;
 
   constructor() {}
 

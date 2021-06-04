@@ -3,7 +3,7 @@
 
 	<div *ngFor="let artefact of artefacts">
 		<h3>
-			<app-artefact-links [artefact]="artefact">
+			<app-artefact-links [artefact]="artefact" [scope]="'public'">
 			</app-artefact-links>
 		</h3>
 		<p *ngIf="artefact.description">

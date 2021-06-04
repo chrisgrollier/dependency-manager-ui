@@ -14,7 +14,7 @@ export class ArtefactService {
   constructor(private appService: AppService) { }
 
   getPublicArtefactViews(): Observable<SimpleArtefactView[]> {
-    return this.appService.getResource<SimpleArtefactView[]>(this.publicBackUrl);
+    return this.appService.getPublicResource<SimpleArtefactView[]>(this.publicBackUrl);
   }
 
   getArtefactViews(): Observable<SimpleArtefactView[]> {
