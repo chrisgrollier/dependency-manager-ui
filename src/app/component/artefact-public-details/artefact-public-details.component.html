@@ -1,0 +1,69 @@
+<div *ngIf="artefact">
+	<p>
+		<a [title]="'Back to artefacts'" [routerLink]="['/public/artefacts']">
+			Back to public artefacts
+		</a>	
+    </p> 
+	<h3>{{ artefact.name }} Details</h3>
+	<p><label>kind: <span>{{ artefact.kind }}</span> </label> <label>type: <span>{{ artefact.type }}</span></label>
+		<label>Last
+		update:
+		<span>{{artefact.lastInfoUpdateDateTime | date:'medium'}}</span></label></p>
+
+	<div>
+		<label>description: 
+      <textarea 
+          rows="2" cols="60" maxLength="250"
+          [(ngModel)]="artefact.description"  placeholder="Enter a description for this artefact"
+          ></textarea>
+    </label>
+	</div>
+	<div>
+		<label>comments: 
+      <textarea
+          rows="2" cols="60" maxLength="250"
+          [(ngModel)]="artefact.comment"  placeholder="Enter comments for this artefact"
+          ></textarea>
+    </label>
+	</div>
+	<div>
+		<label>roadmap: 
+      <textarea
+          rows="2" cols="60" maxLength="250"
+          [(ngModel)]="artefact.roadmapInfo" placeholder="Enter roadmap info for this artefact"
+          ></textarea>
+
+    </label>
+	</div>
+	<div>
+		<label>last major version: 
+      <input [(ngModel)]="artefact.lastVersion" placeholder="Enter last major version" />
+    </label>
+	</div>
+	<div>
+		<label>last release date: 
+      <input type="date" [(ngModel)]="artefact.lastReleaseDate" />
+    </label>
+	</div>
+	<div>
+		<label>obsolescence level: 
+      <input type="number" [(ngModel)]="artefact.obsolescenceLevel"  />
+    </label>
+	</div>
+	<div>
+		<label>vulnerability level: 
+      <input type="number" [(ngModel)]="artefact.vulnerabilityLevel"  />
+    </label>
+	</div>
+	<button (click)="update()">update</button>
+
+	<div><label></label></div>
+
+	<h4>referenced versions: </h4>
+	<div *ngFor="let version of artefact.versions">
+		<a [title]="version.version + ' version details'"
+			[routerLink]="['/artefacts', artefact.id, 'versions', version.id]">
+			{{ version.version }}
+		</a>
+	</div>
+</div>

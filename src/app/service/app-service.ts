@@ -7,16 +7,21 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class AppService {
     private env = environment;
-    public clientId = this.env.clientId;
-    public redirectUri = this.env.redirectUri;
-    public tokenUri = this.env.tokenUri;
-    public logoutUri = this.env.logoutUri;
-    public authUri = this.env.authUri;
-    public scope = this.env.scope;
+    private clientId = this.env.clientId;
+    private redirectUri = this.env.redirectUri;
+    private tokenUri = this.env.tokenUri;
+    private logoutUri = this.env.logoutUri;
+    private authUri = this.env.authUri;
+    private scope = this.env.scope;
     private clientSecret = this.env.clientSecret;
 
     constructor(
         private http: HttpClient) { }
+
+    loginUri() {
+        return this.authUri + '?response_type=code&scope=' + this.scope + '&client_id=' +
+        this.clientId + '&redirect_uri=' + this.redirectUri;
+    }
 
     retrieveToken(code: any) {
         let params = new URLSearchParams();
@@ -25,7 +30,6 @@ export class AppService {
         params.append('client_secret', this.clientSecret);
         params.append('redirect_uri', this.redirectUri);
         params.append('code', code);
-        console.log(code);
         let headers = new HttpHeaders({ 'Content-type': 'application/x-www-form-urlencoded; charset=utf-8' });
         this.http.post(this.tokenUri, params.toString(), { headers: headers })
             .subscribe(
