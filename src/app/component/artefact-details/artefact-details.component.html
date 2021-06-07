@@ -14,7 +14,7 @@
 		<label>description: 
       <textarea 
           rows="2" cols="60" maxLength="250"
-          [(ngModel)]="artefact.description"  placeholder="Enter a description for this artefact" readonly="!isLoggedIn()"
+          [(ngModel)]="artefact.description"  placeholder="Enter a description for this artefact" [readonly]="!isLoggedIn()"
           ></textarea>
     </label>
 	</div>
@@ -52,7 +52,7 @@
 	</div>
 	<div>
 		<label>vulnerability level: 
-      <input type="number" [(ngModel)]="artefact.vulnerabilityLevel" readonly="!isLoggedIn()" />
+      <input type="number" [(ngModel)]="artefact.vulnerabilityLevel"  readonly="!isLoggedIn()"  />
     </label>
 	</div>
 	<div *ngIf="isLoggedIn()">
