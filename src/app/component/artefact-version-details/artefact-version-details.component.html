@@ -11,7 +11,7 @@
     <label>description: 
       <textarea
           rows="2" cols="60" maxLength="250"
-          [(ngModel)]="artefactVersion.versionDescription"  placeholder="Enter a description for this version" readonly="!isLoggedIn()
+          [(ngModel)]="artefactVersion.versionDescription"  placeholder="Enter a description for this version" readonly="!isLoggedIn()"
           ></textarea>
     </label>
   </div>
@@ -19,13 +19,13 @@
     <label>comments: 
       <textarea
           rows="2" cols="60" maxLength="250"
-          [(ngModel)]="artefactVersion.versionComment"  placeholder="Enter comments relative to this version" readonly="!isLoggedIn()
+          [(ngModel)]="artefactVersion.versionComment"  placeholder="Enter comments relative to this version" readonly="!isLoggedIn()"
           ></textarea>
     </label>
   </div>
   <div>
     <label>last minor version: 
-      <input [(ngModel)]="artefactVersion.lastMinorVersion" placeholder="Enter last minor version" readonly="!isLoggedIn() />
+      <input [(ngModel)]="artefactVersion.lastMinorVersion" placeholder="Enter last minor version" readonly="!isLoggedIn()" />
     </label>
   </div>
   <div>
