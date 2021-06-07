@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { AppService } from "src/app/service/app-service";
 import { SimpleArtefactView } from "../../model/simple-artefact-view";
 import { ArtefactService } from "../../service/artefact.service";
 @Component({
@@ -12,7 +13,8 @@ export class ArtefactPublicDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private artefactService: ArtefactService
+    private artefactService: ArtefactService,
+    private appService: AppService
   ) {}
 
   ngOnInit() {

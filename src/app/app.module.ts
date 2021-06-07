@@ -24,8 +24,6 @@ import { ReportService } from "./service/report.service";
 import { ReportLinkComponent } from "./component/report-link/report-link.component";
 import { SpacesComponent } from "./component/spaces/spaces.component";
 import { AppService } from "./service/app-service";
-import { ArtefactPublicListComponent } from "./component/artefact-public-list/artefact-public-list.component";
-import { ArtefactPublicDetailsComponent } from "./component/artefact-public-details/artefact-public-details.component";
 
 @NgModule({
   imports: [
@@ -37,8 +35,6 @@ import { ArtefactPublicDetailsComponent } from "./component/artefact-public-deta
       { path: "applications", component: ApplicationListComponent },
       { path: "packages", component: PackageListComponent },
       { path: "artefacts", component: ArtefactListComponent },
-      { path: "public/artefacts", component: ArtefactPublicListComponent },
-      { path: "public/artefacts/:artefactId", component: ArtefactPublicDetailsComponent },
       { path: "packages/:packageId", component: PackageDetailsComponent },
       { path: "artefacts/:artefactId", component: ArtefactDetailsComponent },
       {
@@ -49,7 +45,7 @@ import { ArtefactPublicDetailsComponent } from "./component/artefact-public-deta
         path: "packages/:packageId/versions/:versionId",
         component: PackageVersionDetailsComponent
       },
-      { path: "", redirectTo: "/public/artefacts", pathMatch: "full" }
+      { path: "", redirectTo: "/artefacts", pathMatch: "full" }
     ], { useHash: true, onSameUrlNavigation: "reload" })
   ],
   declarations: [
@@ -59,9 +55,7 @@ import { ArtefactPublicDetailsComponent } from "./component/artefact-public-deta
     PackageAlertsComponent,
     PackageDetailsComponent,
     ArtefactListComponent,
-    ArtefactPublicListComponent,
     ArtefactDetailsComponent,
-    ArtefactPublicDetailsComponent,
     ArtefactVersionDetailsComponent,
     PackageVersionDetailsComponent,
     ArtefactLinksComponent,

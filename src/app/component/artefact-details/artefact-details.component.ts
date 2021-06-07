@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { AppService } from "src/app/service/app-service";
 import { SimpleArtefactView } from "../../model/simple-artefact-view";
 import { ArtefactService } from "../../service/artefact.service";
 @Component({
@@ -12,8 +13,13 @@ export class ArtefactDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private artefactService: ArtefactService
+    private artefactService: ArtefactService,
+    private appService: AppService
   ) {}
+
+  isLoggedIn() {
+    return this.appService.checkCredentials();
+  }
 
   ngOnInit() {
     // First get the package id from the current route.
@@ -21,9 +27,15 @@ export class ArtefactDetailsComponent implements OnInit {
     const artefactIdFromRoute = Number(routeParams.get("artefactId"));
 
     // Find the product that correspond with the id provided in route.
-    this.artefactService
+    if (this.isLoggedIn()) {
+      this.artefactService
       .getArtefactView(artefactIdFromRoute)
       .subscribe(v => (this.artefact = v));
+    } else {
+      this.artefactService
+      .getPublicArtefactView(artefactIdFromRoute)
+      .subscribe(v => (this.artefact = v));
+    }
   }
 
   update(): void {

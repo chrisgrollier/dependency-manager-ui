@@ -14,7 +14,7 @@
 		<label>description: 
       <textarea 
           rows="2" cols="60" maxLength="250"
-          [(ngModel)]="artefact.description"  placeholder="Enter a description for this artefact"
+          [(ngModel)]="artefact.description"  placeholder="Enter a description for this artefact" readonly="!isLoggedIn()"
           ></textarea>
     </label>
 	</div>
@@ -22,7 +22,7 @@
 		<label>comments: 
       <textarea
           rows="2" cols="60" maxLength="250"
-          [(ngModel)]="artefact.comment"  placeholder="Enter comments for this artefact"
+          [(ngModel)]="artefact.comment"  placeholder="Enter comments for this artefact" readonly="!isLoggedIn()"
           ></textarea>
     </label>
 	</div>
@@ -30,33 +30,34 @@
 		<label>roadmap: 
       <textarea
           rows="2" cols="60" maxLength="250"
-          [(ngModel)]="artefact.roadmapInfo" placeholder="Enter roadmap info for this artefact"
+          [(ngModel)]="artefact.roadmapInfo" placeholder="Enter roadmap info for this artefact" readonly="!isLoggedIn()"
           ></textarea>
 
     </label>
 	</div>
 	<div>
 		<label>last major version: 
-      <input [(ngModel)]="artefact.lastVersion" placeholder="Enter last major version" />
+      <input [(ngModel)]="artefact.lastVersion" placeholder="Enter last major version" readonly="!isLoggedIn()"/>
     </label>
 	</div>
 	<div>
 		<label>last release date: 
-      <input type="date" [(ngModel)]="artefact.lastReleaseDate" />
+      <input type="date" [(ngModel)]="artefact.lastReleaseDate" readonly="!isLoggedIn()"/>
     </label>
 	</div>
 	<div>
 		<label>obsolescence level: 
-      <input type="number" [(ngModel)]="artefact.obsolescenceLevel"  />
+      <input type="number" [(ngModel)]="artefact.obsolescenceLevel" readonly="!isLoggedIn()" />
     </label>
 	</div>
 	<div>
 		<label>vulnerability level: 
-      <input type="number" [(ngModel)]="artefact.vulnerabilityLevel"  />
+      <input type="number" [(ngModel)]="artefact.vulnerabilityLevel" readonly="!isLoggedIn()" />
     </label>
 	</div>
-	<button (click)="update()">update</button>
-
+	<div *ngIf="isLoggedIn()">
+	  <button (click)="update()">update</button>
+	</div>
 	<div><label></label></div>
 
 	<h4>referenced versions: </h4>

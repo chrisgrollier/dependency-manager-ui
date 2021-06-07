@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { ArtefactVersionService } from "../../service/artefact-version.service";
 import { SimpleArtefactVersionView } from "../../model/simple-artefact-version-view";
 import { VersionView } from "../../model/version-view";
+import { AppService } from "src/app/service/app-service";
 
 @Component({
   selector: "app-artefact-version-details",
@@ -15,20 +16,27 @@ export class ArtefactVersionDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private artefactVersionService: ArtefactVersionService
+    private artefactVersionService: ArtefactVersionService,
+    private appService: AppService
   ) {}
+
+  isLoggedIn() {
+    return this.appService.checkCredentials();
+  }
 
   ngOnInit() {
     // First get the package id from the current route.
     const routeParams = this.route.snapshot.paramMap;
     const artefactIdFromRoute = Number(routeParams.get("artefactId"));
     const versionIdFromRoute = Number(routeParams.get("versionId"));
-    this.artefactVersionService
+    if (this.isLoggedIn()) {
+      this.artefactVersionService
       .getSimpleArtefactVersionView(versionIdFromRoute)
       .subscribe(v => (this.artefactVersion = v));
     this.artefactVersionService
       .getVersionView(artefactIdFromRoute, versionIdFromRoute)
       .subscribe(v => (this.version = v));
+    }
   }
 
   update(): void {
