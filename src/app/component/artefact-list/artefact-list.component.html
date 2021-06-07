@@ -3,14 +3,8 @@
 
 	<div *ngFor="let artefact of artefacts">
 		<h3>
-			<div *ngIf="isLoggedIn()">
-				<app-artefact-links [artefact]="artefact">
-				</app-artefact-links>
-				</div> 
-			<div *ngIf="!isLoggedIn()">
-				<app-artefact-links [artefact]="artefact" [scope]="'public'">
-				</app-artefact-links>
-				</div> 
+		<app-artefact-links [artefact]="artefact">
+		</app-artefact-links>
 		</h3>
 		<p *ngIf="artefact.description">
 			<label>description: <span>{{ artefact.description }}</span></label>

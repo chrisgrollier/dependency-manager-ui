@@ -1,13 +1,5 @@
 <div *ngIf="artefact">
-  <span *ngIf="scope == 'public'">
-    <a
-      [title]="artefact.name + ' details'"
-      [routerLink]="['/public/artefacts', artefact.id]"
-    >
-      {{ artefact.name }}
-    </a>
-  </span>
-  <span *ngIf="scope != 'public'">
+  <span>
     <a
       [title]="artefact.name + ' details'"
       [routerLink]="['/artefacts', artefact.id]"
