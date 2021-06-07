@@ -30,6 +30,14 @@ export class ArtefactVersionService {
     );
   }
 
+  getPublicSimpleArtefactVersionView(
+    id: number
+  ): Observable<SimpleArtefactVersionView> {
+    return this.appService.getPublicResource<SimpleArtefactVersionView>(
+      this.versionsBackUrl + "/" + id
+    );
+  }
+
   updateArtefactVersionInfoView(
     id: number,
     info: SimpleArtefactVersionView

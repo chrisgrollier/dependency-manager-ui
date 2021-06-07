@@ -31,11 +31,15 @@ export class ArtefactVersionDetailsComponent implements OnInit {
     const versionIdFromRoute = Number(routeParams.get("versionId"));
     if (this.isLoggedIn()) {
       this.artefactVersionService
-      .getSimpleArtefactVersionView(versionIdFromRoute)
-      .subscribe(v => (this.artefactVersion = v));
-    this.artefactVersionService
-      .getVersionView(artefactIdFromRoute, versionIdFromRoute)
-      .subscribe(v => (this.version = v));
+        .getSimpleArtefactVersionView(versionIdFromRoute)
+        .subscribe(v => (this.artefactVersion = v));
+      this.artefactVersionService
+        .getVersionView(artefactIdFromRoute, versionIdFromRoute)
+        .subscribe(v => (this.version = v));
+    } else {
+      this.artefactVersionService
+        .getPublicSimpleArtefactVersionView(versionIdFromRoute)
+        .subscribe(v => (this.artefactVersion = v));
     }
   }
 

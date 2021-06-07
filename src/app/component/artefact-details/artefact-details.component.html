@@ -22,7 +22,7 @@
 		<label>comments: 
       <textarea
           rows="2" cols="60" maxLength="250"
-          [(ngModel)]="artefact.comment"  placeholder="Enter comments for this artefact" readonly="!isLoggedIn()"
+          [(ngModel)]="artefact.comment"  placeholder="Enter comments for this artefact" [readonly]="!isLoggedIn()"
           ></textarea>
     </label>
 	</div>
@@ -30,29 +30,29 @@
 		<label>roadmap: 
       <textarea
           rows="2" cols="60" maxLength="250"
-          [(ngModel)]="artefact.roadmapInfo" placeholder="Enter roadmap info for this artefact" readonly="!isLoggedIn()"
+          [(ngModel)]="artefact.roadmapInfo" placeholder="Enter roadmap info for this artefact" [readonly]="!isLoggedIn()"
           ></textarea>
 
     </label>
 	</div>
 	<div>
 		<label>last major version: 
-      <input [(ngModel)]="artefact.lastVersion" placeholder="Enter last major version" readonly="!isLoggedIn()"/>
+      <input [(ngModel)]="artefact.lastVersion" placeholder="Enter last major version" [readonly]="!isLoggedIn()"/>
     </label>
 	</div>
 	<div>
 		<label>last release date: 
-      <input type="date" [(ngModel)]="artefact.lastReleaseDate" readonly="!isLoggedIn()"/>
+      <input type="date" [(ngModel)]="artefact.lastReleaseDate" [readonly]="!isLoggedIn()"/>
     </label>
 	</div>
 	<div>
 		<label>obsolescence level: 
-      <input type="number" [(ngModel)]="artefact.obsolescenceLevel" readonly="!isLoggedIn()" />
+      <input type="number" [(ngModel)]="artefact.obsolescenceLevel" [readonly]="!isLoggedIn()" />
     </label>
 	</div>
 	<div>
 		<label>vulnerability level: 
-      <input type="number" [(ngModel)]="artefact.vulnerabilityLevel"  readonly="!isLoggedIn()"  />
+      <input type="number" [(ngModel)]="artefact.vulnerabilityLevel"  [readonly]="!isLoggedIn()"  />
     </label>
 	</div>
 	<div *ngIf="isLoggedIn()">
