@@ -11,6 +11,7 @@ export class ArtefactVersionService {
   private backUrl = this.env.apiRoot + "/artefacts";
   private versionsUrl = "/versions";
   private versionsBackUrl = this.env.apiRoot + "/artefact_versions";
+  private publicVersionsBackUrl = this.env.apiRoot + "/public/artefact_versions";
   constructor(private appService: AppService) { }
 
   getVersionView(
@@ -34,7 +35,7 @@ export class ArtefactVersionService {
     id: number
   ): Observable<SimpleArtefactVersionView> {
     return this.appService.getPublicResource<SimpleArtefactVersionView>(
-      this.versionsBackUrl + "/" + id
+      this.publicVersionsBackUrl + "/" + id
     );
   }
 
