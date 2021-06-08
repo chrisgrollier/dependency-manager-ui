@@ -7,7 +7,7 @@ export const environment = {
   authUri: "https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/oauth2/v1/authorize",
   logoutUri: "https://idcs-ff72d424ef424056bfc689d6a41302cb.identity.oraclecloud.com:443/oauth2/v1/userlogout",
   redirectUri: "https://132.145.60.143",
-  scope: "openid%20https%3A%2F%2F132.145.60.143%2Fapi%2Fv1%2Fread%20https%3A%2F%2F132.145.60.143%2Fapi%2Fv1%2Fwrite%20groups",
+  scope: "openid%20https%3A%2F%2F132.145.60.143%2Fapi%2Fv1%2Fread%20https%3A%2F%2F132.145.60.143%2Fapi%2Fv1%2Fwrite%20groups%20profile%20approles",
   //scope: "openid",
   tokenAuthMode: "header"
 };
