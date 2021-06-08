@@ -52,25 +52,25 @@ export class AppService {
     }
 
     getPublicResource<T>(resourceUrl: string): Observable<T> {
-        var headers = new HttpHeaders({ 'Content-type': 'application/json' });
+        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'x-Content-Type-Options':'nosniff' });
         return this.http.get<T>(resourceUrl, { headers: headers });
     }
 
     getResource<T>(resourceUrl: string): Observable<T> {
-        var headers = new HttpHeaders({ 'Content-type': 'application/json', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
+        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'x-Content-Type-Options':'nosniff', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
         return this.http.get<T>(resourceUrl, { headers: headers });
     }
 
     patchResource<T, D>(resourceUrl: string, data: D): Observable<T> {
-        var headers = new HttpHeaders({ 'Content-type': 'application/json', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
+        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'x-Content-Type-Options':'nosniff', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
         return this.http.patch<T>(resourceUrl, data, { headers: headers });
     }
 
     getExcelResource(resourceUrl: string): Observable<Blob> {
-        var headers = new HttpHeaders({ Accept: "application/vnd.ms-excel", Authorization: 'Bearer ' + Cookie.get('access_token') });
+        var headers = new HttpHeaders({ Accept: "application/vnd.ms-excel" ,'x-Content-Type-Options':'nosniff', Authorization: 'Bearer ' + Cookie.get('access_token') });
         return this.http.get(resourceUrl, 
             { responseType: "blob", 
-            headers: new HttpHeaders({ Accept: "application/vnd.ms-excel", Authorization: 'Bearer ' + Cookie.get('access_token') }) 
+            headers: new HttpHeaders({ Accept: "application/vnd.ms-excel" ,'x-Content-Type-Options':'nosniff', Authorization: 'Bearer ' + Cookie.get('access_token') }) 
         });
     }
 
