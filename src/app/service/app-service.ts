@@ -44,7 +44,6 @@ export class AppService {
         Cookie.set("access_token", token.access_token, expireDate);
         Cookie.set("id_token", token.id_token, expireDate);
         console.log('Obtained Access token');
-        console.log(token);
         window.location.href = this.redirectUri;
     }
 

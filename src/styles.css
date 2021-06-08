@@ -25,14 +25,13 @@ router-outlet + * {
 /* Text */
 
 h1 {
-  font-size: 24px;
+  font-size: 22px;
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
-h1,
 h2 {
   font-weight: lighter;
 }
