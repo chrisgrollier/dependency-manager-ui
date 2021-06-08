@@ -30,6 +30,7 @@ export class AppService {
         params.append('client_secret', this.clientSecret);
         params.append('redirect_uri', this.redirectUri);
         params.append('code', code);
+        console.log(code);
         let headers = new HttpHeaders({ 'Content-type': 'application/x-www-form-urlencoded; charset=utf-8' });
         this.http.post(this.tokenUri, params.toString(), { headers: headers })
             .subscribe(
@@ -43,6 +44,7 @@ export class AppService {
         Cookie.set("access_token", token.access_token, expireDate);
         Cookie.set("id_token", token.id_token, expireDate);
         console.log('Obtained Access token');
+        console.log(token);
         window.location.href = this.redirectUri;
     }
 
@@ -52,25 +54,25 @@ export class AppService {
     }
 
     getPublicResource<T>(resourceUrl: string): Observable<T> {
-        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'x-Content-Type-Options':'nosniff' });
+        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'Accept': '*/*' });
         return this.http.get<T>(resourceUrl, { headers: headers });
     }
 
     getResource<T>(resourceUrl: string): Observable<T> {
-        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'x-Content-Type-Options':'nosniff', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
+        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'Accept': '*/*' ,'Cache-Control': 'nocache', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
         return this.http.get<T>(resourceUrl, { headers: headers });
     }
 
     patchResource<T, D>(resourceUrl: string, data: D): Observable<T> {
-        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'x-Content-Type-Options':'nosniff', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
+        var headers = new HttpHeaders({ 'Content-type': 'application/json' ,'Accept': '*/*', 'Authorization': 'Bearer ' + Cookie.get('access_token') });
         return this.http.patch<T>(resourceUrl, data, { headers: headers });
     }
 
     getExcelResource(resourceUrl: string): Observable<Blob> {
-        var headers = new HttpHeaders({ Accept: "application/vnd.ms-excel" ,'x-Content-Type-Options':'nosniff', Authorization: 'Bearer ' + Cookie.get('access_token') });
+        var headers = new HttpHeaders({ Accept: "application/vnd.ms-excel" , Authorization: 'Bearer ' + Cookie.get('access_token') });
         return this.http.get(resourceUrl, 
             { responseType: "blob", 
-            headers: new HttpHeaders({ Accept: "application/vnd.ms-excel" ,'x-Content-Type-Options':'nosniff', Authorization: 'Bearer ' + Cookie.get('access_token') }) 
+            headers: new HttpHeaders({ Accept: "application/vnd.ms-excel" , Authorization: 'Bearer ' + Cookie.get('access_token') }) 
         });
     }
 
