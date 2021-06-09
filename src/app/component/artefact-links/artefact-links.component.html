@@ -7,7 +7,7 @@
       {{ artefact.name }}
     </a>
   </span>
-  <span *ngIf="artefact.kind == 'mvn'">
+  <span *ngIf="artefact.kind == 'mvn' && !artefact.onPrivateRepository">
     <a
       [title]="'View on mvnrepository'"
       [href]="'https://mvnrepository.com/artifact/' + artefact.name.replace(':', '/')"
@@ -15,7 +15,7 @@
       >(repo)</a
     >
   </span>
-  <span *ngIf="artefact.kind == 'npm'">
+  <span *ngIf="artefact.kind == 'npm' && !artefact.onPrivateRepository">
     <a
       [title]="'View on npmjs'"
       [href]="'https://www.npmjs.com/package/' + artefact.name.replace(':', '/')"

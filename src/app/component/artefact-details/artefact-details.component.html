@@ -52,9 +52,15 @@
 	</div>
 	<div>
 		<label>vulnerability level: 
-      <input type="number" [(ngModel)]="artefact.vulnerabilityLevel"  [readonly]="!isLoggedIn()"  />
-    </label>
+        <input type="number" [(ngModel)]="artefact.vulnerabilityLevel"  [readonly]="!isLoggedIn()"  />
+       </label>
 	</div>
+	<div>
+		<label>private
+		<input type="checkbox" [(ngModel)]="artefact.onPrivateRepository" [disabled]="!isLoggedIn()" [readonly]="!isLoggedIn()" />
+	   </label>
+	  </div>
+	
 	<div *ngIf="isLoggedIn()">
 	  <button (click)="update()">update</button>
 	</div>
