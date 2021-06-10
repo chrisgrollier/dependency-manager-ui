@@ -25,11 +25,11 @@ router-outlet + * {
 /* Text */
 
 h1 {
-  font-size: 22px;
+  font-size: 20px;
 }
 
 h2 {
-  font-size: 18px;
+  font-size: 16px;
 }
 
 h2 {
@@ -37,7 +37,7 @@ h2 {
 }
 
 p {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /* Hyperlink */
@@ -139,16 +139,23 @@ app-top-bar h1 {
 
 /* Checkout Cart, Shipping Prices */
 
+.main-grid {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.main-grid-item,
 .cart-item,
 .shipping-item {
   width: 100%;
-  min-width: 400px;
-  max-width: 450px;
-  display: flex;
-  flex-direction: row;
+  min-width: 320px;
+  max-width: 320px;
+  display: flexbox;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 16px 32px;
+  padding: 16px 16px;
   margin-bottom: 8px;
+  margin-right: 8px;
   border-radius: 2px;
   background-color: #eeeeee;
 }

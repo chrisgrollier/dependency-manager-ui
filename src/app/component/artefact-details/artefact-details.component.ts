@@ -10,6 +10,8 @@ import { ArtefactService } from "../../service/artefact.service";
 })
 export class ArtefactDetailsComponent implements OnInit {
   artefact!: SimpleArtefactView;
+  mvnGroup!: string;
+  artefactName!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,12 +32,13 @@ export class ArtefactDetailsComponent implements OnInit {
     if (this.isLoggedIn()) {
       this.artefactService
       .getArtefactView(artefactIdFromRoute)
-      .subscribe(v => (this.artefact = v));
+      .subscribe(v => (this.prepareFinalView(v)));
     } else {
       this.artefactService
       .getPublicArtefactView(artefactIdFromRoute)
-      .subscribe(v => (this.artefact = v));
+      .subscribe(v => (this.prepareFinalView(v)));
     }
+
   }
 
   update(): void {
@@ -47,7 +50,15 @@ export class ArtefactDetailsComponent implements OnInit {
       });
   }
 
-  back(): void {
-    ///this.location.back();
+  private prepareFinalView(v: SimpleArtefactView) {
+    this.artefact = v;
+    this.artefactName = this.artefact.name;
+    if (this.artefact && this.artefact.kind == 'mvn') {
+      const p = this.artefact.name.lastIndexOf(':')
+      if (p >= 0) {
+        this.mvnGroup = this.artefact.name.substring(0, p);
+        this.artefactName = this.artefact.name.substring(p+1);
+      }
+    }
   }
 }

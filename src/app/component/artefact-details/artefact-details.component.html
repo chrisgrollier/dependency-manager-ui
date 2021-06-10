@@ -4,8 +4,10 @@
 			Back to artefacts
 		</a>	
     </p> 
-	<h3>{{ artefact.name }} Details</h3>
-	<p><label>kind: <span>{{ artefact.kind }}</span> </label> <label>type: <span>{{ artefact.type }}</span></label>
+	<h3>{{ artefactName }} Details</h3>
+	<p><label>kind: <span>{{ artefact.kind }}</span> </label> 
+		<label *ngIf="mvnGroup">group: <span>{{ mvnGroup }}</span></label>
+		<label>type: <span>{{ artefact.type }}</span></label>
 		<label>Last
 		update:
 		<span>{{artefact.lastInfoUpdateDateTime | date:'medium'}}</span></label></p>
@@ -13,7 +15,7 @@
 	<div>
 		<label>description: 
       <textarea 
-          rows="2" cols="60" maxLength="250"
+          rows="3" cols="40" maxLength="250"
           [(ngModel)]="artefact.description"  placeholder="Enter a description for this artefact" [readonly]="!isLoggedIn()"
           ></textarea>
     </label>
@@ -21,7 +23,7 @@
 	<div>
 		<label>comments: 
       <textarea
-          rows="2" cols="60" maxLength="250"
+          rows="3" cols="40" maxLength="250"
           [(ngModel)]="artefact.comment"  placeholder="Enter comments for this artefact" [readonly]="!isLoggedIn()"
           ></textarea>
     </label>
@@ -29,7 +31,7 @@
 	<div>
 		<label>roadmap: 
       <textarea
-          rows="2" cols="60" maxLength="250"
+          rows="3" cols="40" maxLength="250"
           [(ngModel)]="artefact.roadmapInfo" placeholder="Enter roadmap info for this artefact" [readonly]="!isLoggedIn()"
           ></textarea>
 

@@ -1,16 +1,16 @@
 <div *ngIf="artefactVersion">
   <p>
     <a [title]="artefactVersion.name + ' details'" [routerLink]="['/artefacts', artefactVersion.id]">
-      Back to {{ artefactVersion.name }}
+      Back to {{ artefactName }}
     </a>
   </p>
-  <h3>{{ artefactVersion.name }} {{artefactVersion.version}} Details </h3>
+  <h3>{{ artefactName }} {{artefactVersion.version}} Details </h3>
   <label>last update: <span>{{artefactVersion.versionLastInfoUpdateDateTime | date:'medium'}}</span></label>
 
   <div>
     <label>description: 
       <textarea
-          rows="2" cols="60" maxLength="250"
+          rows="3" cols="40" maxLength="250"
           [(ngModel)]="artefactVersion.versionDescription"  placeholder="Enter a description for this version" [readonly]="!isLoggedIn()"
           ></textarea>
     </label>
@@ -18,7 +18,7 @@
   <div>
     <label>comments: 
       <textarea
-          rows="2" cols="60" maxLength="250"
+          rows="3" cols="40" maxLength="250"
           [(ngModel)]="artefactVersion.versionComment"  placeholder="Enter comments relative to this version" [readonly]="!isLoggedIn()"
           ></textarea>
     </label>

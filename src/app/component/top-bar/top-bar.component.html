@@ -1,11 +1,11 @@
 <a *ngIf="isLoggedIn" [title]="'View analyzed applications'" [routerLink]="['/applications']">
-  <h1>Applications</h1>
+  <h1>Apps</h1>
 </a>
 <a *ngIf="isLoggedIn" [title]="'View analyzed packages'" [routerLink]="['/packages']">
   <h1>Packages</h1>
 </a>
 <a [title]="'View dependency catalog'" [routerLink]="['/artefacts']">
-  <h1>Dependencies</h1>
+  <h1>Catalog</h1>
 </a>
 <button *ngIf="!isLoggedIn" class="fancy-button" (click)="login()" type="submit">Login</button>
 <button *ngIf="isLoggedIn" class="fancy-button" (click)="logout()" type="submit">Logout</button>

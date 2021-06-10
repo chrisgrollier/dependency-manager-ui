@@ -10,6 +10,8 @@ import { PackageService } from "../../service/package.service";
 })
 export class PackageDetailsComponent implements OnInit {
   package!: PackageView;
+  mvnGroup!: string;
+  packageName!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +27,7 @@ export class PackageDetailsComponent implements OnInit {
     // Find the product that correspond with the id provided in route.
     this.packageService
       .getPackageView(packageIdFromRoute)
-      .subscribe(v => (this.package = v));
+      .subscribe(v => (this.prepareFinalView(v)));
   }
 
   update(): void {
@@ -40,4 +42,17 @@ export class PackageDetailsComponent implements OnInit {
   gotoList() {
     this.router.navigate(["/"]);
   }
+
+  private prepareFinalView(v: PackageView) {
+    this.package = v;
+    this.packageName = this.package.name;
+    if (this.package && this.package.kind == 'mvn') {
+      const p = this.package.name.lastIndexOf(':')
+      if (p >= 0) {
+        this.mvnGroup = this.package.name.substring(0, p);
+        this.packageName = this.package.name.substring(p+1);
+      }
+    }
+  }
+
 }

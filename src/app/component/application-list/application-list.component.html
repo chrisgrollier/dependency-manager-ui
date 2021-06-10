@@ -2,16 +2,16 @@
   <h2>{{ applications.length }} applications <app-report-link>
     </app-report-link>
   </h2>
-  <div *ngFor="let application of applications">
-    <h3>
-      
-        {{ application.name }} ({{ application.kind }})
-      
-      <app-report-link [package]="application">
-      </app-report-link>
-    </h3>
-    <p *ngIf="application.description">
-      Description: {{ application.description }}
-    </p>
+  <div class="main-grid">
+    <div *ngFor="let application of applications" class="main-grid-item">
+      <h3>
+          {{ application.name }} ({{ application.kind }})
+        <app-report-link [package]="application">
+        </app-report-link>
+      </h3>
+      <p *ngIf="application.description">
+        Description: {{ application.description }}
+      </p>
+    </div>
   </div>
 </div>

@@ -13,6 +13,8 @@ import { AppService } from "src/app/service/app-service";
 export class ArtefactVersionDetailsComponent implements OnInit {
   artefactVersion!: SimpleArtefactVersionView;
   version!: VersionView;
+  mvnGroup!: string;
+  artefactName!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,14 +34,14 @@ export class ArtefactVersionDetailsComponent implements OnInit {
     if (this.isLoggedIn()) {
       this.artefactVersionService
         .getSimpleArtefactVersionView(versionIdFromRoute)
-        .subscribe(v => (this.artefactVersion = v));
+        .subscribe(v => (this.prepareFinalView(v)));
       this.artefactVersionService
         .getVersionView(artefactIdFromRoute, versionIdFromRoute)
         .subscribe(v => (this.version = v));
     } else {
       this.artefactVersionService
         .getPublicSimpleArtefactVersionView(versionIdFromRoute)
-        .subscribe(v => (this.artefactVersion = v));
+        .subscribe(v => (this.prepareFinalView(v)));
     }
   }
 
@@ -51,4 +53,17 @@ export class ArtefactVersionDetailsComponent implements OnInit {
         window.alert("The artefact version has been updated!");
       });
   }
+  
+  private prepareFinalView(v: SimpleArtefactVersionView) {
+    this.artefactVersion = v;
+    this.artefactName = this.artefactVersion.name;
+    if (this.artefactVersion && this.artefactVersion.kind == 'mvn') {
+      const p = this.artefactVersion.name.lastIndexOf(':')
+      if (p >= 0) {
+        this.mvnGroup = this.artefactVersion.name.substring(0, p);
+        this.artefactName = this.artefactVersion.name.substring(p+1);
+      }
+    }
+  }
+
 }

@@ -1,15 +1,24 @@
 <div *ngIf="packages">
 	<h2>{{ packages.length }} Packages</h2>
-	<div *ngFor="let package of packages">
-		<h3>
-			<a [title]="package.name + ' details'" [routerLink]="['/packages', package.id]">
-				{{ package.name }} ({{ package.kind }})
-			</a>
-		</h3>
-		<p *ngIf="package.description">
-			Description: {{ package.description }}
-		</p>
-		<app-package-alerts [package]="package" (notify)="onNotify()">
-		</app-package-alerts>
+	<div class="main-grid">
+		<div *ngFor="let package of packages" class="main-grid-item">
+			<h3>
+				<a *ngIf="package.kind == 'mvn' && package.name.lastIndexOf(':') >=0; else notMaven" 
+					[title]="package.name + ' details'" 
+					[routerLink]="['/packages', package.id]">
+					{{ package.name.substring(package.name.lastIndexOf(':')+1) }} ({{ package.kind }})
+				</a>
+				<ng-template #notMaven>
+					<a [title]="package.name + ' details'" [routerLink]="['/packages', package.id]">
+						{{ package.name }} ({{ package.kind }})
+					</a>
+					</ng-template>
+			</h3>
+			<p *ngIf="package.description">
+				Description: {{ package.description }}
+			</p>
+			<app-package-alerts [package]="package" (notify)="onNotify()">
+			</app-package-alerts>
+		</div>
 	</div>
 </div>
