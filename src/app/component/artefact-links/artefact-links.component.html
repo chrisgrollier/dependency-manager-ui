@@ -1,10 +1,14 @@
 <div *ngIf="artefact">
+
+  <p *ngIf="mvnGroup">
+    <span>{{ mvnGroup }}</span>
+  </p>  
   <span>
     <a
       [title]="artefact.name + ' details'"
       [routerLink]="['/artefacts', artefact.id]"
     >
-      {{ artefact.name }}
+      {{ artefactName }}
     </a>
   </span>
   <span *ngIf="artefact.kind == 'mvn' && !artefact.onPrivateRepository">

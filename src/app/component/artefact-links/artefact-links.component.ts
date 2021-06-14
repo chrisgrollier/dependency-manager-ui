@@ -11,8 +11,24 @@ export class ArtefactLinksComponent implements OnInit {
   artefact!: SimpleArtefactView;
   @Input()
   scope!: string;
+  mvnGroup!: string;
+  artefactName!: string;
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.prepareFinalView();
+  }
+
+  private prepareFinalView() {
+    this.artefactName = this.artefact.name;
+    if (this.artefact && this.artefact.kind == 'mvn') {
+      const p = this.artefact.name.lastIndexOf(':')
+      if (p >= 0) {
+        this.mvnGroup = this.artefact.name.substring(0, p);
+        this.artefactName = this.artefact.name.substring(p+1);
+      }
+    }
+  }
+
 }
