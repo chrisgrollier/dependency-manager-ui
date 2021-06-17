@@ -76,10 +76,13 @@ export class AppService {
     }
 
     checkCredentials() {
-        return Cookie.check('access_token');
+        return this.env.skipSecurity ? true : Cookie.check('access_token');
     }
 
     logout() {
+        if (this.env.skipSecurity) {
+            return;
+        }
         let token = Cookie.get('id_token');
         Cookie.delete('access_token');
         Cookie.delete('id_token');
