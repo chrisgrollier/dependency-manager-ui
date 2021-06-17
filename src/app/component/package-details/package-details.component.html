@@ -1,6 +1,10 @@
 <div *ngIf="package">
-
-  <h2>{{ packageName }} Details</h2>
+  <p>
+		<a [title]="'Back to packages'" [routerLink]="['/packages']">
+			Back to packages
+		</a>	
+    </p> 
+  <h3>{{ packageName }} Details</h3>
 
   <p>
     <label>kind: <span>{{ package.kind }}</span></label> 
