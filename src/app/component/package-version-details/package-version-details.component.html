@@ -1,14 +1,13 @@
 <div *ngIf="packageVersion">
   <p>
     <a [title]="packageVersion.name + ' details'" [routerLink]="['/packages', packageVersion.id]">
-      Back to {{packageVersion.name}}
+      Back to {{packageName}}
     </a>
   </p>
-  <h3>{{ packageVersion.name }} {{packageVersion.version}} Details</h3>
-  <p>description: {{packageVersion.versionDescription}}</p>
-  <p>last minor version: {{packageVersion.lastMinorVersion}}</p>
-  <p>comment: {{packageVersion.versionComment}}</p>
-  <p>criticity: {{packageVersion.criticity}}</p>
+  <h3>{{ packageName }} {{packageVersion.version}} Details</h3>
+  <p>kind: {{packageVersion.kind}}</p>
+  <p *ngIf="mvnGroup">group: <span>{{ mvnGroup }}</span></p>
+  <p>type: {{packageVersion.type}}</p>
   <h4>
     dependencies:
   </h4>

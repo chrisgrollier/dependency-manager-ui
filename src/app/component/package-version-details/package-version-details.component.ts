@@ -12,6 +12,8 @@ import { VersionView } from "../../model/version-view";
 export class PackageVersionDetailsComponent implements OnInit {
   packageVersion!: SimpleArtefactVersionView;
   version!: VersionView;
+  mvnGroup!: string;
+  packageName!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,9 +27,21 @@ export class PackageVersionDetailsComponent implements OnInit {
     const versionIdFromRoute = Number(routeParams.get("versionId"));
     this.packageVersionService
       .getSimplePackageVersionView(versionIdFromRoute)
-      .subscribe(v => (this.packageVersion = v));
+      .subscribe(v => (this.prepareFinalView(v)));
     this.packageVersionService
       .getVersionView(packageIdFromRoute, versionIdFromRoute)
       .subscribe(v => (this.version = v));
+  }
+  
+  private prepareFinalView(v: SimpleArtefactVersionView) {
+    this.packageVersion = v;
+    this.packageName = this.packageVersion.name;
+    if (this.packageVersion && this.packageVersion.kind == 'mvn') {
+      const p = this.packageVersion.name.lastIndexOf(':')
+      if (p >= 0) {
+        this.mvnGroup = this.packageVersion.name.substring(0, p);
+        this.packageName = this.packageVersion.name.substring(p+1);
+      }
+    }
   }
 }
