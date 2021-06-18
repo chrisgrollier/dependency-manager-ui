@@ -2,6 +2,9 @@
 	<h2>{{ packages.length }} Packages</h2>
 	<div class="main-grid">
 		<div *ngFor="let package of packages" class="main-grid-item">
+			<p *ngIf="package.kind == 'mvn' && package.name.lastIndexOf(':') >=0">
+				Group: {{ package.name.substring(0, package.name.lastIndexOf(':')) }}
+			</p>
 			<h3>
 				<a *ngIf="package.kind == 'mvn' && package.name.lastIndexOf(':') >=0; else notMaven" 
 					[title]="package.name + ' details'" 
