@@ -15,7 +15,7 @@ body {
 .container {
   display: flex;
   flex-direction: row;
-  padding-top: 60px;
+/*  padding-top: 60px; */
 }
 
 router-outlet + * {
@@ -80,7 +80,7 @@ textarea {
   width: auto;
 }
 
-/* Button */
+/* Button 
 .button,
 button {
   display: inline-flex;
@@ -104,7 +104,7 @@ button:hover {
 button:disabled {
   opacity: 0.5;
   cursor: auto;
-}
+}*/
 
 /* Fancy Button */
 
@@ -119,7 +119,7 @@ button:disabled {
 }
 
 /* Top Bar */
-
+/*
 app-top-bar {
   width: 100%;
   height: 58px;
@@ -135,7 +135,7 @@ app-top-bar {
 app-top-bar h1 {
   color: white;
   margin: 0;
-}
+}*/
 
 /* Checkout Cart, Shipping Prices */
 
@@ -165,3 +165,6 @@ Copyright Google LLC. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at https://angular.io/license
 */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

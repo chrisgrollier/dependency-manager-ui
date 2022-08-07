@@ -24,6 +24,11 @@ import { ReportService } from "./service/report.service";
 import { ReportLinkComponent } from "./component/report-link/report-link.component";
 import { SpacesComponent } from "./component/spaces/spaces.component";
 import { AppService } from "./service/app-service";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -46,7 +51,12 @@ import { AppService } from "./service/app-service";
         component: PackageVersionDetailsComponent
       },
       { path: "", redirectTo: "/artefacts", pathMatch: "full" }
-    ], { useHash: true, onSameUrlNavigation: "reload" })
+    ], { useHash: true, onSameUrlNavigation: "reload" }),
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatListModule
   ],
   declarations: [
     AppComponent,
